@@ -1,4 +1,3 @@
-import Connection from '../lib/connection.js'
 import { cpus as _cpus, totalmem, freemem } from 'os'
 import os from 'os'
 import fs from 'fs'
@@ -14,9 +13,12 @@ let format = sizeFormatter({
 })
 
 let handler = async (m, { conn }) => {
-  const chats = Object.entries(Connection.store.chats).filter(([id, data]) => id && data.isChats)
-  const groupsIn = chats.filter(([id]) => id.endsWith('@g.us')) //groups.filter(v => !v.read_only)
-  const used = process.memoryUsage()
+  let groups
+	try { groups = Object.values(await conn.groupFetchAllParticipating()) }
+	catch { return }
+	let chats = Object.entries(conn.chats).filter(([id, data]) => id && data.isChats)
+	let groupsIn = chats.filter(([id]) => id.endsWith('@g.us'))
+	let used = process.memoryUsage()
   const cpus = _cpus().map(cpu => {
     cpu.total = Object.keys(cpu.times).reduce((last, type) => last + cpu.times[type], 0)
     return cpu

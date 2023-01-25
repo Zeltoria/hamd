@@ -1,9 +1,9 @@
-import { Telesticker } from 'xfarr-api'
+import { telesticker } from 'xfarr-api'
 import { stickerTelegram } from '@bochilteam/scraper'
 
 let handler = async (m, { conn, args }) => {
 	if (args[0] && args[0].match(/(https:\/\/t.me\/addstickers\/)/gi)) {
-		let res = await Telesticker(args[0])
+		let res = await telesticker(args[0])
 		await m.reply(`Sending ${res.length} stickers...`)
 		if (m.isGroup && res.length > 30) {
 			await m.reply('Number of stickers more than 30, bot will send it in private chat.')
