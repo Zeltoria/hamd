@@ -1,3 +1,4 @@
+import Connection from '../lib/connection.js'
 import { cpus as _cpus, totalmem, freemem } from 'os'
 import os from 'os'
 import fs from 'fs'
