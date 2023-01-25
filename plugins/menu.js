@@ -117,7 +117,6 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname, isPrems, args, usedPr
 						title: `━ ━ ━ ━ 『 SUB MENU 』 ━ ━ ━ ━`,
 						rows: [
 							{title: '🎪 ALL MENU', rowId: usedPrefix + 'menuall', description: '● Menampilkan Semua Menu'},
-							{title: '🪙 STORE', rowId: usedPrefix + 'menustore', description: '🛒 Bot Store : List Items'},
 							{title: '🪷 OWNER', rowId: usedPrefix + 'menuowner', description: '◉ Owner, ROwner, Mods Privilages'},
 							{title: '🎎 ANIME', rowId: usedPrefix + 'menuanime', description: '◉ Cari Manga, Anime, Random Pic'},
 							{title: '⌛ DOWNLOAD', rowId: usedPrefix + 'menudownload',  description: '◎ Youtube, Facebook, Tiktok, Dll...'},
