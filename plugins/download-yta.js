@@ -1,8 +1,8 @@
 import fetch from 'node-fetch'
 import { youtubedl, youtubedlv2, youtubedlv3 } from '@bochilteam/scraper'
-import { niceBytes, isUrl, somematch } from '../lib/others.js'
+import { niceBytes, somematch } from '../lib/others.js'
 
-let handler = async (m, { conn, text, args, command, apilol }) => {
+let handler = async (m, { conn, text, args, command }) => {
 	if (!text.match(new RegExp(/(?:https?:\/\/)?(?:youtu\.be\/|(?:www\.|m\.)?youtube\.com\/(?:watch|v|embed|shorts)(?:\.php)?(?:\?.*v=|\/))([a-zA-Z0-9\_-]+)/, 'gi'))) return m.reply(`Invalid Youtube URL.`)
 	try {
 		const { audio: _audio, title } = await youtubedl(args[0]).catch(async _ => await youtubedlv2(args[0])).catch(async _ => await youtubedlv3(args[0]))
@@ -58,7 +58,7 @@ let handler = async (m, { conn, text, args, command, apilol }) => {
 
 handler.menudownload = ['ytaudio <url>']
 handler.tagsdownload = ['search']
-handler.command = /^yt(a(udio)?|mp3)$/i
+handler.command = /^(yt(a(udio)?|mp3))$/i
 
 handler.premium = true
 handler.limit = true
