@@ -797,9 +797,9 @@ export async function handler(chatUpdate) {
 			let datas = db.data.datas
 			if (typeof datas !== 'object') db.data.datas = {}
 			if (datas) {
-				if (!('packname' in datas)) datas.packname = ''
-				if (!('author' in datas)) datas.author = ''
-				if (!('linkgc' in datas)) datas.linkgc = ''
+				if (!('packname' in datas)) datas.packname = 'HamBotz-md'
+				if (!('author' in datas)) datas.author = 'by ham'
+				if (!('linkgc' in datas)) datas.linkgc = 'https://chat.whatsapp.com/E00H4H5B83jFOmlV8DVO94'
 				if (!('teksdonasi' in datas)) datas.teksdonasi = ''
 				if (!('tekssewa' in datas)) datas.tekssewa = ''
 				if (!('teksjadibot' in datas)) datas.teksjadibot = ''
@@ -814,7 +814,13 @@ export async function handler(chatUpdate) {
 				if (!('spamlistgcmsg' in datas)) datas.spamlistgcmsg = null
 				if (!('openaipc' in datas)) datas.openaipc = false
 				if (!('prems' in datas)) datas.prems = [{user: '', date: 0}]
-				if (!('rowner' in datas)) datas.rowner = []
+				if (!('rowner' in datas)) datas.rowner = [
+					[
+						"6287729860010",
+						"ham",
+						true
+					]
+				]
 				if (!('owner' in datas)) datas.owner = []
 				if (!('store' in datas)) datas.store = []
 				if (!('storestatus' in datas)) datas.storestatus = {}
@@ -824,9 +830,9 @@ export async function handler(chatUpdate) {
 				if (!('menfesschat' in datas)) datas.menfesschat = {}
 				if (!('menfesschatcd' in datas)) datas.menfesschatcd = 0
 			} else db.data.datas = {
-				packname: '',
-				author: '',
-				linkgc: '',
+				packname: 'HamBotz-md',
+				author: 'by ham',
+				linkgc: 'https://chat.whatsapp.com/E00H4H5B83jFOmlV8DVO94',
 				api: '',
 				imgbb: '',
 				wgempa: '',
@@ -841,7 +847,13 @@ export async function handler(chatUpdate) {
 				teksjadibot: '',
 				tekstopup: '',
 				prems: [{user: '', date: 0}],
-				rowner: [],
+				rowner: [
+					[
+						"6287729860010",
+						"ham",
+						true
+					]
+				],
 				owner: [],
 				store: [],
 				storestatus: {},
