@@ -9,7 +9,7 @@ let handler = async(m, { conn, text, usedPrefix, command }) => {
   ]
   let buttonMessage = {
     image: { url: result},
-    caption: `Pencarian ${text}     \n*Klik next untuk melanjutkan*`,
+    caption: `*Klik next untuk melanjutkan*`,
     buttons: button,
     headerType: 4
   }
