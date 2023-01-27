@@ -36,7 +36,7 @@ ${vid.url}
 `.trim(), wm, `🎵Audio(${filesizeF})`, `.yta ${vid.url}`, `🎦Video(${yt2.filesizeF})`, `.yt ${vid.url} `, m)
 }
 handler.menudownload = ['play <url>']
-handler.tags = ['downloader']
-handler.command = /^(p|play)$/i
+handler.tags = ['search']
+handler.command = /^(play|(play)?yt(play|dl)?)$/i
 
 module.exports = handler

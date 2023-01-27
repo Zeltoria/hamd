@@ -10,7 +10,7 @@ let handler = async (m, { conn, text }) => {
 	}
 }
 handler.menudownload = ['twitter <url>']
-handler.tagsdownload = ['download']
+handler.tagsdownload = ['search']
 handler.command = /^((twt|twitter)(dl)?)$/i
 
 export default handler

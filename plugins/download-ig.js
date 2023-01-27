@@ -8,7 +8,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     for (const { url } of results) await conn.sendFile(m.chat, url, 'instagram.mp4', `🔗 *Url:* ${url}`, m)
 }
 handler.menudownload = ['ig <url>']
-handler.tagsdownload = ['download']
+handler.tagsdownload = ['search']
 
 handler.command = /^(ig(dl)?)$/i
 

@@ -22,7 +22,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
   }
 }
 handler.menudownload = ['instagramstory <url>']
-handler.tagsdownload = ['download']
+handler.tagsdownload = ['search']
 handler.command = /^((igs|instagrams)(tory)?(dl)?(downloa?d(er)?)?)$/i
 
 handler.limit = true

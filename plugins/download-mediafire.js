@@ -13,7 +13,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     await conn.sendFile(m.chat, url, filename, '', m, null, { mimetype: ext, asDocument: true })
 }
 handler.menudownload = ['mediafire <url>']
-handler.tagsdownload = ['download']
+handler.tagsdownload = ['search']
 handler.command = /^(mediafire|mf)$/i
 
 handler.limit = true
