@@ -142,7 +142,7 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname, isPrems, args, usedPr
 					text: text.replaceAll('#','```').trim(),
 					footer: pauthor,
 					//title: '',
-					buttonText: `SUB MENU 🎫`,
+					buttonText: `MENU`,
 					sections
 				}
 				await conn.sendMessage(m.chat, listMessage, {quoted: ftrol})

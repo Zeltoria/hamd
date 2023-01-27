@@ -1,42 +1,57 @@
-const { servers, yta, ytv } = require('../lib/y2mate')
-let yts = require('yt-search')
-let fetch = require('node-fetch')
-let handler = async (m, { conn, command, text, usedPrefix }) => {
-  if (!text) throw `uhm.. cari apa?\n\ncontoh:\n${usedPrefix + command} dj tiktok`
-  
-  let chat = global.db.data.chats[m.chat]
-  let results = await yts(text)
-  let vid = results.all.find(video => video.seconds < 3600)
-  if (!vid) throw 'Konten Tidak ditemukan'
-  let isVideo = /2$/.test(command)
-  let yt = false
-  let yt2 = false
-  let usedServer = servers[0]
-  for (let i in servers) {
-    let server = servers[i]
-    try {
-      yt = await yta(vid.url, server)
-      yt2 = await ytv(vid.url, server)
-      usedServer = server
-      break
-    } catch (e) {
-      m.reply(`Server ${server} error!${servers.length >= i + 1 ? '' : '\nmencoba server lain...'}`)
-    }
-  }
-  if (yt === false) throw 'semua server gagal'
-  if (yt2 === false) throw 'semua server gagal'
-  let { dl_link, thumb, title, filesize, filesizeF } = yt
-  await conn.send2ButtonImg(m.chat, await (await fetch(thumb)).buffer(), `
-*Judul:* ${title}
-*Ukuran File Audio:* ${filesizeF}
-*Ukuran File Video:* ${yt2.filesizeF}
-*Server y2mate:* ${usedServer}
-*Link Sumber:* 
-${vid.url}
-`.trim(), wm, `🎵Audio(${filesizeF})`, `.yta ${vid.url}`, `🎦Video(${yt2.filesizeF})`, `.yt ${vid.url} `, m)
+import { youtubeSearch, youtubedl, youtubedlv2, youtubedlv3 } from '@bochilteam/scraper'
+import xa from 'xfarr-api'
+
+let handler = async (m, { conn, text, args, usedPrefix, command }) => {
+	if (!text) throw `Example: ${usedPrefix + command} Sia Unstopable`
+	if (text.includes('http://') || text.includes('https://')) {
+		if (!text.match(new RegExp(/(?:https?:\/\/)?(?:youtu\.be\/|(?:www\.|m\.)?youtube\.com\/(?:watch|v|embed|shorts)(?:\.php)?(?:\?.*v=|\/))([a-zA-Z0-9\_-]+)/, 'gi'))) return m.reply(`Invalid Youtube URL.`)
+		try {
+			let anu = await youtubeSearch(text)
+			let ini_txt = `📌 *${anu.video[0].title}*\n\n`
+			ini_txt += `🪶 *Author :* ${anu.video[0].authorName}\n`
+			ini_txt += `⏲️ *Published :* ${anu.video[0].publishedTime}\n`
+			ini_txt += `⌚ *Duration :* ${anu.video[0].durationH}\n`
+			ini_txt += `👁️ *Views :* ${anu.video[0].viewH}\n`
+			ini_txt += `🌀 *Url :* ${anu.video[0].url}`
+			conn.sendButton(m.chat, ini_txt, pauthor, anu.video[0].thumbnail.split("?")[0], [
+				[`🎧 Audio`, `${usedPrefix}yta ${anu.video[0].url}`],
+				[`🎥 Video`, `${usedPrefix}ytv ${anu.video[0].url}`]
+			], m)
+		} catch (e) {
+			console.log(e)
+			try {
+				let anu = await youtubedl(args[0]).catch(async _ => await youtubedlv2(args[0])).catch(async _ => await youtubedlv3(args[0]))
+				let ini_txt = `📌 *${anu.title}*\n\n`
+				ini_txt += `👁️ *id :* ${anu.id}\n`
+				ini_txt += `⌚ *v_id :* ${anu.v_id}\n`
+				ini_txt += `🌀 *Url :* ${args[0]}`
+				conn.sendButton(m.chat, ini_txt, pauthor, anu.thumbnail, [
+					[`🎧 Audio`, `${usedPrefix}yta ${args[0]}`],
+					[`🎥 Video`, `${usedPrefix}ytv ${args[0]}`]
+				], m)
+			} catch (e) {
+						console.log(e)
+						try {
+							let anu = await xa.downloader.youtube(text)
+							let ini_txt = `📌 *${anu.title}*\n\n`
+							ini_txt += `🪶 *Author :* ${anu.author}\n`
+							ini_txt += `👁️ *Username :* ${anu.username}\n`
+							ini_txt += `🌀 *Url :* https://youtu.be/${anu.thumbnail.split('/')[4]}`
+							conn.sendButton(m.chat, ini_txt, pauthor, anu.thumbnail, [
+								[`🎧 Audio`, `${usedPrefix}yta https://youtu.be/${anu.thumbnail.split('/')[4]}`],
+								[`🎥 Video`, `${usedPrefix}ytv https://youtu.be/${anu.thumbnail.split('/')[4]}`]
+							], m)
+						} catch (e) {
+							console.log(e)
+							m.reply(`Tidak ditemukan hasil, atau gunakan link yt`)
+				}
+			}
+		}
+	}
 }
-handler.menudownload = ['play <url>']
-handler.tags = ['search']
+
+handler.menudownload = ['ytplay <teks> / <url>']
+handler.tagsdownload = ['search']
 handler.command = /^(play|(play)?yt(play|dl)?)$/i
 
-module.exports = handler
+export default handler
