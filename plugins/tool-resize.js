@@ -1,4 +1,4 @@
-import { jimp } from 'jimp'
+const jimp = require("jimp")
 const uploadImage = require("../lib/uploadImage.js")
 const uploadFile = require("../lib/uploadFile.js")
 
