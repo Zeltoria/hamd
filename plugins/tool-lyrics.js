@@ -1,4 +1,4 @@
-let finder = require('lyrics-finder')
+import { finder } from 'lyrics-finder'
 let handler = async (m, { text, usedPrefix, command }) => {
   if (!text) throw `uhm.. cari apa?\n\ncontoh:\n${usedPrefix + command} kepastian rasa`
   let error = `Maaf tidak di temukan lirik *${text}*`
