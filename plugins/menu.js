@@ -1,20 +1,46 @@
 import db from '../lib/database.js'
 import { promises } from 'fs'
 import { join } from 'path'
+import moment from 'moment-timezone'
 import { xpRange } from '../lib/levelling.js'
 import { readMore, ranNumb, padLead, runtime } from '../lib/others.js'
 import fs from 'fs'
+import fetch from 'node-fetch'
 import os from 'os'
 
 let tagsm = {}
 const defaultMenu = {
 	before: `%name!
 
-⦿ 🧱 Limit : *%limit Limit*
-⦿ 🦸🏼‍♂️ Role : *%role*
-⦿ 🔼 Level : *%level (%exp / %maxexp)*
-⦿ 💵 Money : *%money*
-⦿ 💫 Total XP : %totalexp ✨
+╭─────═[ INFO USER ]═─────⋆
+│╭───────────────···
+┴│☂︎ Limit : %limit Limit
+⬡│☂︎ Role : %role
+⬡│☂︎ Level : %level (%exp / %maxexp)
+⬡│☂︎ Money : %money
+┬│☂︎ Total XP : %totalexp
+│╰────────────────···
+┠─────═[ TODAY ]═─────⋆
+│╭────────────────···
+┴│    *${ucapan()} %name!*
+⬡│☂︎ Tanggal: %week %weton
+⬡│☂︎ Date: %date
+⬡│☂︎ Tanggal Islam: %dateIslamic
+┬│☂︎ Waktu:  %time
+│╰────────────────···
+┠─────═[ INFO BOT ]═─────⋆
+│╭────────────────···
+┴│☂︎ Nama Bot: %me
+⬡│☂︎ Mode: %mode
+⬡│☂︎ Prefix: [ %usedPrefix ]
+⬡│☂︎ Baileys: Multi Device
+⬡│☂︎ Battery: ${conn.battery != undefined ? `${conn.battery.value}% ${conn.battery.live ? '🔌 pengisian' : ''}` : 'tidak diketahui'}
+⬡│☂︎ Platform: %platform
+⬡│☂︎ Type: Node.Js
+⬡│☂︎ Uptime: %uptime
+┬│☂︎ Database: %totalreg User
+│╰────────────────···
+╰──────────═┅═──────────
 
 JOIN GROUP BOT
 https://chat.whatsapp.com/E00H4H5B83jFOmlV8DVO94

@@ -1,17 +1,23 @@
-let finder = require('lyrics-finder')
-let handler = async (m, { text, usedPrefix, command }) => {
-  if (!text) throw `uhm.. cari apa?\n\ncontoh:\n${usedPrefix + command} kepastian rasa`
-  let error = `Maaf tidak di temukan lirik *${text}*`
-  let res = await finder("", text)
-  if (!res) throw error
+import { lyrics, lyricsv2 } from '@bochilteam/scraper'
 
-  m.reply(res)
+let handler = async (m, { conn, text, usedPrefix, command }) => {
+    let teks = text ? text : m.quoted && m.quoted.text ? m.quoted.text : ''
+    if (!teks) throw `Use example ${usedPrefix}${command} hallo`
+    const result = await lyricsv2(teks).catch(async _ => await lyrics(teks))
+    m.reply(`
+Lyrics *${result.title}*
+Author ${result.author}
+
+
+${result.lyrics}
+
+
+Url ${result.link}
+`.trim())
 }
-handler.help = ['lirik <teks>']
+
+handler.help = ['lirik'].map(v => v + ' <Apa>')
 handler.tags = ['tools']
 handler.command = /^(lirik|lyrics|lyric)$/i
-handler.limit = true
 
 export default handler
-
-
