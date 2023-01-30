@@ -10,15 +10,17 @@ import os from 'os'
 
 let tagsm = {}
 const defaultMenu = {
-	before: `%name!
-
+	before: `
 ╭─────═[ INFO USER ]═─────⋆
 │╭───────────────···
-┴│☂︎ Limit : %limit Limit
-⬡│☂︎ Role : %role
-⬡│☂︎ Level : %level (%exp / %maxexp)
-⬡│☂︎ Money : %money
-┬│☂︎ Total XP : %totalexp
+┴│☂︎ Name: %name
+⬡│☂︎ Tag: %tag
+⬡│☂︎ Limit: %limit Limit
+⬡│☂︎ Money: %money
+⬡│☂︎ *Role: %role
+⬡│☂︎ Level : %level
+⬡│☂︎ Xp: %exp / %maxexp
+┬│☂︎ Total Xp: %totalexp
 │╰────────────────···
 ┠─────═[ TODAY ]═─────⋆
 │╭────────────────···
@@ -32,7 +34,7 @@ const defaultMenu = {
 │╭────────────────···
 ┴│☂︎ Nama Bot: %me
 ⬡│☂︎ Mode: %mode
-⬡│☂︎ Prefix: [ %usedPrefix ]
+⬡│☂︎ Prefix: [ %_p ]
 ⬡│☂︎ Baileys: Multi Device
 ⬡│☂︎ Battery: ${conn.battery != undefined ? `${conn.battery.value}% ${conn.battery.live ? '🔌 pengisian' : ''}` : 'tidak diketahui'}
 ⬡│☂︎ Platform: %platform
@@ -45,10 +47,10 @@ const defaultMenu = {
 JOIN GROUP BOT
 https://chat.whatsapp.com/E00H4H5B83jFOmlV8DVO94
 
-⦿ 📊 Database : %totalreg User
-⦿ 📈 Runtime : *%uptime*
-
 _Claim *.daily* atau mainkan game di *.funmenu* untuk mendapatkan exp / money_
+
+Jika ada fitur yang eror *.report* untuk melaporkan ke owner
+request fitur? *.request* 
 `.trimStart(),
 	header: '╭─「 %category 」',
 	body: '│ • %cmd %islimit %isPremium',
@@ -93,12 +95,12 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname, isPrems, args, usedPr
 		let body = conn.menu.body || defaultMenu.body
 		let footer = conn.menu.footer || defaultMenu.footer
 		let _text = [
-			before.replace(': *%limit', `${isPrems ? ': *Infinity' : ': *%limit'}`).replace(`%name!`, `${jam < 4 ? `*Hello %name!, 🌌 it's early in the morning*` : jam < 11 ? `*🌅 Good Morning %name!*` : jam < 14 ? `*☀️ Good Afternoon %name!*` : jam < 18 ? `*🌄 Good Evening %name!*` : `*Hello %name!, 🌖 Good Night*`}`),
+			before.replace(': *%limit', `${isPrems ? ': *Infinity' : ': *%limit'}`),
 			...Object.keys(tagsm).map(tag => {
 				return header.replace(/%category/g, tagsm[tag]) + '\n' + [
 					...helpm.filter(menu => menu.tagsm && menu.tagsm.includes(tag) && menu.helpm).map(menu => {
 						return menu.helpm.map(helpm => {
-							return body.replace(/%cmd/g, menu.prefix ? helpm : '%p' + helpm)
+							return body.replace(/%cmd/g, menu.prefix ? helpm : '%_p' + helpm)
 								.replace(/%islimit/g, menu.limit ? '(Limit)' : '')
 								.replace(/%isPremium/g, menu.premium ? '(Premium)' : '')
 								.trim()
@@ -108,6 +110,41 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname, isPrems, args, usedPr
 				].join('\n')
 			})
 		].join('\n')
+		let mode = global.opts['self'] ? 'Private' : 'Publik'
+		let tag = `@${m.sender.split('@')[0]}`
+		let platform = os.platform()
+		let ucpn = `${ucapan()}`
+    	let d = new Date(new Date + 3600000)
+    	let locale = 'id'
+		let week = d.toLocaleDateString(locale, { weekday: 'long' })
+    	let date = d.toLocaleDateString(locale, {
+      	day: 'numeric',
+      	month: 'long',
+      	year: 'numeric'
+    	})
+		let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
+    	// d.getTimeZoneOffset()
+    	// Offset -420 is 18.00
+    	// Offset    0 is  0.00
+    	// Offset  420 is  7.00
+    	let weton = ['Pahing', 'Pon', 'Wage', 'Kliwon', 'Legi'][Math.floor(d / 84600000) % 5]
+    	let dateIslamic = Intl.DateTimeFormat(locale + '-TN-u-ca-islamic', {
+      	day: 'numeric',
+      	month: 'long',
+      	year: 'numeric'
+    	}).format(d)
+    	let time = d.toLocaleTimeString(locale, {
+      	hour: 'numeric',
+      	minute: 'numeric',
+      	second: 'numeric'
+    	})
+		let wib = moment.tz('Asia/Jakarta').format('HH:mm:ss')
+    	let wibh = moment.tz('Asia/Jakarta').format('HH')
+    	let wibm = moment.tz('Asia/Jakarta').format('mm')
+    	let wibs = moment.tz('Asia/Jakarta').format('ss')
+    	let wit = moment.tz('Asia/Jayapura').format('HH:mm:ss')
+    	let wita = moment.tz('Asia/Makassar').format('HH:mm:ss')
+    	let wktuwib = `${wibh} H ${wibm} M ${wibs} S`
 		let text = typeof conn.menu == 'string' ? conn.menu : typeof conn.menu == 'object' ? _text : ''
 		let replace = {
 			'%': '%',
@@ -118,7 +155,7 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname, isPrems, args, usedPr
 			maxexp: xp,
 			totalexp: exp,
 			xp4levelup: max - exp,
-			level, limit, name, totalreg, role,
+			level, limit, name, totalreg, role, tag, week, weton, date, dateIslamic, time, mode, _p, platform,
 			readmore: readMore
 		}
 		text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
@@ -182,3 +219,23 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname, isPrems, args, usedPr
 handler.command = /^((m(enu)?|help)(list)?|\?)$/i
 
 export default handler
+
+
+/// FUNCTION ALL
+function ucapan() {
+  const time = moment.tz('Asia/Jakarta').format('HH')
+  let res = "Kok Belum Tidur Kak? 🥱"
+  if (time >= 4) {
+    res = "Pagi Lord 🌄"
+  }
+  if (time >= 10) {
+    res = "Siang Lord ☀️"
+  }
+  if (time >= 15) {
+    res = "Sore Lord 🌇"
+  }
+  if (time >= 18) {
+    res = "Malam Lord 🌙"
+  }
+  return res
+}
