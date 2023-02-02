@@ -4,8 +4,7 @@ import { pickRandom } from '../lib/others.js'
 import { sticker } from '../lib/sticker.js'
 
 let handler = async (m, { conn, usedPrefix, command }) => {
-	let chat = db.data.chats[m.chat]
-	if (!chat.nsfw && m.isGroup) throw `[ *NSFW GAK AKTIF* ]`
+	if (m.isGroup && !db.data.chats[m.chat].nsfw) throw `[ *NSFW GAK AKTIF* ]`
 	try {
 		let res = await fetch(`https://raw.githubusercontent.com/clicknetcafe/Databasee/main/nsfw/${command.toLowerCase().replace('manga2nsfw','manga').replace('nekonimensfw','nekonime')}.json`)
 		let anu = pickRandom(await res.json())
@@ -24,7 +23,7 @@ handler.menunsfw = ['eba','foot','gifs','hentaivid','jahy','manga2nsfw','neko2',
 handler.tagsnsfw = ['randompic']
 handler.command = /^(eba|foot|gifs|hentaivid|jahy|manga2nsfw|neko2|nekonimensfw|nsfwloli|nsfwmanga|nsfwneko|panties|zettai)$/i
 
-
+handler.premium = true
 handler.limit = true
 
 export default handler
