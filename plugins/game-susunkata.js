@@ -39,6 +39,6 @@ handler.menufun = ['susunkata (money+)']
 handler.tagsfun = ['game']
 handler.command = /^(susunkata)$/i
 
-handler.premium = true
+
 
 export default handler

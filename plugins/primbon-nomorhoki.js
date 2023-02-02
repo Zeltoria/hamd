@@ -31,7 +31,7 @@ handler.help = ['nomorhoki']
 handler.tags = ['primbon']
 handler.command = /^(nom(o|e)rhoki)$/i
 
-handler.premium = true
+
 handler.limit = true
 
 export default handler

@@ -33,7 +33,7 @@ handler.help = ['ocr']
 handler.tags = ['information']
 handler.command = /^(ocr)$/i
 
-handler.premium = true
+
 handler.limit = true
 
 export default handler

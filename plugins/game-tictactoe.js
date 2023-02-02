@@ -63,6 +63,6 @@ handler.menufun = ['tictactoe', 'ttt'].map(v => v + ' [custom room name]')
 handler.tagsfun = ['game']
 handler.command = /^(tictactoe|t{3})$/
 
-handler.premium = true
+
 
 export default handler

@@ -28,7 +28,7 @@ handler.help = ['anjing','bucin','gawrgura','patrick'].map(v => 'stiker' + v)
 handler.tags = ['searching']
 handler.command = /^(s(tic?ker)?(anjing|bucin|(gawr?)?gura|patric?k))$/i
 
-handler.premium = true
+
 handler.limit = true
 
 export default handler

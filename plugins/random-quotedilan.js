@@ -24,7 +24,7 @@ handler.help = ['quotedilan']
 handler.tags = ['randomtext']
 handler.command = /^((quotes?|kata)dilan)$/i
 
-handler.premium = true
+
 handler.limit = true
 
 export default handler

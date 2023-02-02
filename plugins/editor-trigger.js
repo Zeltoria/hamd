@@ -26,7 +26,7 @@ handler.menueditor = ['trigger']
 handler.tagseditor = ['search']
 handler.command = /^(trigger(ed)?)$/i
 
-handler.premium = true
+
 handler.limit = true
 
 export default handler

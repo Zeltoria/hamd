@@ -25,7 +25,7 @@ handler.menudownload = ['gdrive <url>']
 handler.tagsdownload = ['search']
 handler.command = /^(g(oogle)?drive)$/i
 
-handler.premium = true
+
 handler.limit = true
 
 export default handler

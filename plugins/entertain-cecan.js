@@ -39,7 +39,7 @@ handler.help = ['cecan <option>']
 handler.tags = ['entertainment']
 handler.command = /^(cecan)$/i
 
-handler.premium = true
+
 handler.limit = true
 
 export default handler

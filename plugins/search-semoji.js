@@ -20,7 +20,7 @@ handler.help = ['semoji <emoji>']
 handler.tags = ['searching']
 handler.command = /^(s(tic?ker)?e?mojix?)$/i
 
-handler.premium = true
+
 handler.limit = true
 
 export default handler

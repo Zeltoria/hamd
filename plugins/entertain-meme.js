@@ -33,7 +33,7 @@ handler.help = ['meme']
 handler.tags = ['entertainment']
 handler.command = /^((random)?meme)$/i
 
-handler.premium = true
+
 handler.limit = true
 
 export default handler

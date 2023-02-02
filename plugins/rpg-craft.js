@@ -106,6 +106,6 @@ handler.menufun = ['craft'].map(v => v + ' [item] [count]')
 handler.tagsfun = ['rpg']
 handler.command = /^(craft(ing)?)$/i
 
-handler.premium = true
+
 
 export default handler

@@ -14,7 +14,7 @@ handler.help = ['carigrup']
 handler.tags = ['information']
 handler.command = /^((cari|find)(link)?(gc|gro?up))$/i
 
-handler.premium = true
+
 handler.limit = true
 
 export default handler

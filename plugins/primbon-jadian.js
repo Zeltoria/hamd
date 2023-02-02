@@ -19,9 +19,9 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
 			let json = await res.json()
 			if (json.status != '200') throw new e()
 			let get_result = json.result
-			let ini_txt = `*Karakteristik :* ${get_result.karakteristik}\n\n`
-			ini_txt += `*Deskripsi :* ${get_result.deskripsi}`
-			m.reply(ini_txt)
+			let txt = `*Karakteristik :* ${get_result.karakteristik}\n\n`
+			txt += `*Deskripsi :* ${get_result.deskripsi}`
+			m.reply(txt)
 		} catch (e) {
 			m.reply(`Terjadi kesalahan, coba lagi nanti.`)
 		}
@@ -32,7 +32,7 @@ handler.help = ['jadian <tgl>|<bln>|<thn>']
 handler.tags = ['primbon']
 handler.command = /^(jadian)$/i
 
-handler.premium = true
+
 handler.limit = true
 
 export default handler

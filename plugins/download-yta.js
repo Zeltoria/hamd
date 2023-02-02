@@ -31,7 +31,7 @@ handler.menudownload = ['ytaudio <url>']
 handler.tagsdownload = ['search']
 handler.command = /^(yt(a(udio)?|mp3))$/i
 
-handler.premium = true
+
 handler.limit = true
 
 export default handler

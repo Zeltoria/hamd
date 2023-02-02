@@ -22,7 +22,7 @@ handler.menudownload = ['gitclone']
 handler.tagsdownload = ['search']
 handler.command = /^(gitclone)$/i
 
-handler.premium = true
+
 handler.limit = true
 
 export default handler

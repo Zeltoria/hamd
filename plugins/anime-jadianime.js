@@ -31,7 +31,7 @@ handler.menuanime = ['jadianime']
 handler.tagsanime = ['search']
 handler.command = /^((to|jadi)a?nime)$/i
 
-handler.premium = true
+
 handler.limit = true
 
 export default handler

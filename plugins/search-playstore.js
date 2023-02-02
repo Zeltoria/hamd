@@ -25,7 +25,7 @@ handler.help = ['playstore'].map(v => v + ' <query>')
 handler.tags = ['searching']
 handler.command = /^(playstore|apk)$/i
 
-handler.premium = true
+
 handler.limit = true
 
 export default handler

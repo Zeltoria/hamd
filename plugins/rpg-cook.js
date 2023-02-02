@@ -186,6 +186,6 @@ handler.tagsfun = ['rpg']
 handler.command = /^((cook(ing)?)|((me)?masak))$/i
 
 handler.cooldown = cooldown
-handler.premium = true
+
 
 export default handler

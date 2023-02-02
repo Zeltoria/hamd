@@ -24,7 +24,7 @@ handler.menunsfw = ['eba','foot','gifs','hentaivid','jahy','manga2nsfw','neko2',
 handler.tagsnsfw = ['randompic']
 handler.command = /^(eba|foot|gifs|hentaivid|jahy|manga2nsfw|neko2|nekonimensfw|nsfwloli|nsfwmanga|nsfwneko|panties|zettai)$/i
 
-handler.premium = true
+
 handler.limit = true
 
 export default handler

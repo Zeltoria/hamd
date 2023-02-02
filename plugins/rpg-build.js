@@ -117,6 +117,6 @@ handler.menufun = ['build'].map(v => v + ' [item] [count]')
 handler.tagsfun = ['rpg']
 handler.command = /^(build(ing)?)$/i
 
-handler.premium = true
+
 
 export default handler

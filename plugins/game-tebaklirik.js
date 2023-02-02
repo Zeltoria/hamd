@@ -38,6 +38,6 @@ handler.menufun = ['tebaklirik (exp+)']
 handler.tagsfun = ['game']
 handler.command = /^(tebaklirik)$/i
 
-handler.premium = true
+
 
 export default handler

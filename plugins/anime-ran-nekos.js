@@ -21,7 +21,7 @@ handler.menuanime = ['baka','facepalm','feed','husbando','nod','nope','tickle']
 handler.tagsanime = ['randompic']
 handler.command = /^(baka|facepalm|feed|husbando|nod|nope|tickle)$/i
 
-handler.premium = true
+
 handler.limit = true
 
 export default handler

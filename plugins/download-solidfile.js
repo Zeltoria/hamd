@@ -28,7 +28,7 @@ handler.menudownload = ['solidfile <url>']
 handler.tagsdownload = ['search']
 handler.command = /^(solidfiles?)$/i
 
-handler.premium = true
+
 handler.limit = true
 
 export default handler

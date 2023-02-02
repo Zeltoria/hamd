@@ -17,7 +17,7 @@ handler.help = ['aiimage']
 handler.tags = ['creator']
 handler.command = /^((open)?ai(image|gambar|foto|dalle))$/i
 
-handler.premium = true
+
 handler.limit = true
 
 export default handler

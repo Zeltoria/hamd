@@ -28,7 +28,7 @@ handler.help = ['ceknsfw']
 handler.tags = ['information']
 handler.command = /^(ch?ec?k)nsfw|nsfw(ch?ec?k)$/i
 
-handler.premium = true
+
 handler.limit = true
 
 export default handler

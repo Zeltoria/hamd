@@ -37,7 +37,7 @@ handler.help = ['osuplayer <username>']
 handler.tags = ['information']
 handler.command = /^(osuplayer)$/i
 
-handler.premium = true
+
 handler.limit = true
 
 export default handler

@@ -29,7 +29,7 @@ handler.menudownload = ['480','720','1080'].map(v => 'ytvideo'+v+' <url>')
 handler.tagsdownload = ['search']
 handler.command = /^(yt(v(ideo)?|mp4)(480|720|1080)p?)$/i
 
-handler.premium = true
+
 handler.limit = true
 
 export default handler

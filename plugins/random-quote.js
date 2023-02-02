@@ -24,7 +24,7 @@ handler.help = ['quote']
 handler.tags = ['randomtext']
 handler.command = /^(quotes?)$/i
 
-handler.premium = true
+
 handler.limit = true
 
 export default handler

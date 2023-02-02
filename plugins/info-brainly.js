@@ -7,13 +7,13 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
 		let json = await res.json()
 		if (json.status != '200') throw `Informasi tidak tersedia.`
 		let get_result = json.result
-		let ini_txt = "*Result :*"
+		let txt = "*Result :*"
 		for (var x of get_result) {
-			ini_txt += `\n\n*Question :*\n${x.question.content}\n`
-			ini_txt += `*Answer :*\n${x.answer[0].content}\n`
-			ini_txt += `───────────────────`
+			txt += `\n\n*Question :*\n${x.question.content}\n`
+			txt += `*Answer :*\n${x.answer[0].content}\n`
+			txt += `───────────────────`
 		}
-		await m.reply(ini_txt)
+		await m.reply(txt)
 	} catch (e) {
 		console.log(e)
 		m.reply(`Informasi tidak tersedia.`)
@@ -24,7 +24,7 @@ handler.help = ['brainly <teks>']
 handler.tags = ['information']
 handler.command = /^(brainly)$/i
 
-handler.premium = true
+
 handler.limit = true
 
 export default handler

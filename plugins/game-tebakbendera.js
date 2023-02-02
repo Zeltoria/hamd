@@ -43,6 +43,6 @@ handler.menufun = ['tebakbendera (exp+)']
 handler.tagsfun = ['game']
 handler.command = /^(tebakbendera)$/i
 
-handler.premium = true
+
 
 export default handler

@@ -38,6 +38,6 @@ handler.menufun = ['tebaktebakan (money+)']
 handler.tagsfun = ['game']
 handler.command = /^(tebaktebakan)$/i
 
-handler.premium = true
+
 
 export default handler

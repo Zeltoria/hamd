@@ -12,7 +12,7 @@ let handler = async (m, { conn }) => {
 	if (!canLevelUp(user.level, user.exp, global.multiplier)) {
 		let image, data, pp, out
 		let { min, xp, max } = xpRange(user.level, global.multiplier)
-		let ini_txt = `Level *${user.level} (${user.exp - min}/${xp})*\nKurang *${max - user.exp}* lagi!`
+		let txt = `Level *${user.level} (${user.exp - min}/${xp})*\nKurang *${max - user.exp}* lagi!`
 		let meh = padLead(ranNumb(43), 3)
 		let nais = fs.readFileSync(`./media/picbot/menus/menus_${meh}.jpg`)
 		try {
@@ -29,10 +29,10 @@ let handler = async (m, { conn }) => {
 			}
 			image = await new can.Rank().setAvatar(pp).setUsername(name ? name.replaceAll('\n','') : '-').setBg(out).setNeedxp(`${xp}`).setCurrxp(`${user.exp - min}`).setLevel(`${user.level}`).setRank('https://i.ibb.co/Wn9cvnv/FABLED.png').toAttachment()
 			data = image.toBuffer()
-			await conn.sendMessage(m.chat, { image: data, caption: ini_txt }, { quoted: m })
+			await conn.sendMessage(m.chat, { image: data, caption: txt }, { quoted: m })
 		} catch (e) {
 			console.log(e)
-			m.reply(ini_txt)
+			m.reply(txt)
 		}
 	} else {
 		let before = user.level * 1
@@ -325,7 +325,7 @@ let handler = async (m, { conn }) => {
 			user.role = 'Legends 忍'
 		}
 		if (before !== user.level) {
-			let ini_txt = `Selamat ${name ? name.replaceAll('\n','') : '-'} naik 🧬level\n• 🧬Level Sebelumnya : ${before}\n• 🧬Level Baru : ${user.level}\n• Pada Jam : ${new Date().toLocaleString('id-ID')}\n*_Semakin sering berinteraksi dengan bot Semakin Tinggi level kamu_*`
+			let txt = `Selamat ${name ? name.replaceAll('\n','') : '-'} naik 🧬level\n• 🧬Level Sebelumnya : ${before}\n• 🧬Level Baru : ${user.level}\n• Pada Jam : ${new Date().toLocaleString('id-ID')}\n*_Semakin sering berinteraksi dengan bot Semakin Tinggi level kamu_*`
 			try {
 				let image, data, pp
 				try {
@@ -335,9 +335,9 @@ let handler = async (m, { conn }) => {
 				}
 				image = await new can.Up().setAvatar(pp).toAttachment()
 				data = image.toBuffer()
-				await conn.sendMessage(m.chat, { image: data, caption: ini_txt }, { quoted: m })
+				await conn.sendMessage(m.chat, { image: data, caption: txt }, { quoted: m })
 			} catch {
-				m.reply(ini_txt)
+				m.reply(txt)
 			}
 		}
 	}
