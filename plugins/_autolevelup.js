@@ -300,19 +300,7 @@ export async function before(m) {
 
 	if (before !== user.level) {
 		let txt = `Selamat 🥳, anda telah naik level!\n\n• 🧬 Level Up : *${before}* -> *${user.level}*`.trim()
-		try {
-			let image, data, pp
-			try {
-				pp = await this.profilePictureUrl(m.sender, 'image')
-			} catch {
-				pp = 'https://i.ibb.co/m53WF9N/avatar-contact.png'
-			}
-			image = await new can.Up().setAvatar(pp).toAttachment()
-			data = image.toBuffer()
-			await this.sendMessage(m.chat, { image: data, caption: txt }, { quoted: m })
-		} catch {
-			await m.reply(txt)
-		}
+		await m.reply(txt)
 	}
 }
 export const disabled = false

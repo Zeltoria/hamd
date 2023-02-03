@@ -326,19 +326,8 @@ let handler = async (m, { conn }) => {
 		}
 		if (before !== user.level) {
 			let ini_txt = `Selamat ${name ? name.replaceAll('\n','') : '-'} naik 🧬level\n• 🧬Level Sebelumnya : ${before}\n• 🧬Level Baru : ${user.level}\n• Pada Jam : ${new Date().toLocaleString('id-ID')}\n*_Semakin sering berinteraksi dengan bot Semakin Tinggi level kamu_*`
-			try {
-				let image, data, pp
-				try {
-					pp = await conn.profilePictureUrl(m.sender, 'image')
-				} catch {
-					pp = 'https://i.ibb.co/m53WF9N/avatar-contact.png'
-				}
-				image = await new can.Up().setAvatar(pp).toAttachment()
-				data = image.toBuffer()
-				await conn.sendMessage(m.chat, { image: data, caption: ini_txt }, { quoted: m })
-			} catch {
-				m.reply(ini_txt)
-			}
+			
+			m.reply(ini_txt)
 		}
 	}
 }
