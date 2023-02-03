@@ -71,6 +71,6 @@ handler.tagsfun = ['rpg']
 handler.command = /^(berburu|hunt)$/i
 
 handler.cooldown = cooldown
-
+handler.premium = true
 
 export default handler

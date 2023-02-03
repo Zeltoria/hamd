@@ -6,8 +6,8 @@ let handler = async(m, { conn, text, usedPrefix, command }) => {
 	try {
 		let anu = await fetch(`https://api.akuari.my.id/downloader/likeedl?link=${text}`)
 		let json = await anu.json()
-		let txt = `${json.hasil.title}`
-		conn.sendButton(m.chat, txt, pauthor, json.hasil.watermark, [
+		let ini_txt = `${json.hasil.title}`
+		conn.sendButton(m.chat, ini_txt, pauthor, json.hasil.watermark, [
 			[`► No WM`, `${usedPrefix}likeenowm ${text}`]
 		], m)
 	} catch (e) {
@@ -20,7 +20,7 @@ handler.menudownload = ['likee <url>']
 handler.tagsdownload = ['search']
 handler.command = /^(likee(wm)?)$/i
 
-
+handler.premium = true
 handler.limit = true
 
 export default handler

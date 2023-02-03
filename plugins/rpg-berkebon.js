@@ -49,6 +49,6 @@ handler.tagsfun = ['rpg']
 handler.command = /^(berkeb(o|u)n)$/i
 
 handler.cooldown = cooldown
-
+handler.premium = true
 
 export default handler

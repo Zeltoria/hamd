@@ -3,8 +3,7 @@ import { family100 } from '@bochilteam/scraper'
 const winScore = 1499
 
 async function handler(m, { conn, usedPrefix, isPrems }) {
-	let chat = db.data.chats[m.chat]
-	if (!chat.game && m.isGroup) return
+	if (m.isGroup && !db.data.chats[m.chat].game) return
 	this.game = this.game ? this.game : {}
 	let id = 'family100_' + m.chat
 	if (id in this.game) {
@@ -34,6 +33,6 @@ handler.menufun = ['family100']
 handler.tagsfun = ['game']
 handler.command = /^family100$/i
 
-
+handler.premium = true
 
 export default handler

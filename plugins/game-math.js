@@ -1,8 +1,7 @@
 import db from '../lib/database.js'
 
 let handler = async (m, { conn, args, text, usedPrefix, command, isPrems }) => {
-	let chat = db.data.chats[m.chat]
-	if (!chat.game && m.isGroup) return
+	if (m.isGroup && !db.data.chats[m.chat].game) return
 	if (db.data.users[m.sender].limit < 1 && db.data.users[m.sender].money > 50000 && !isPrems) throw `Beli limit dulu lah, duid lu banyak kan 😏`
 	else if (db.data.users[m.sender].limit > 0 && !isPrems) db.data.users[m.sender].limit -= 1
 	conn.math = conn.math ? conn.math : {}
@@ -40,7 +39,7 @@ handler.menufun = ['math <mode>']
 handler.tagsfun = ['game']
 handler.command = /^math/i
 
-
+handler.premium = true
 
 let modes = {
 	noob: [-3, 3, -3, 3, '+-', 15000, 10],

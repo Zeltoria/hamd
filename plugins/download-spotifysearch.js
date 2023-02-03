@@ -7,23 +7,23 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
 	let json = await res.json()
 	if (json.status != '200') throw `Terjadi kesalahan, coba lagi nanti.`
 	let get_result = json.result
-	let txt = `Found : *${text}*`
+	let ini_txt = `Found : *${text}*`
 	for (var x of get_result) {
-		txt += `\n\n*Title : ${x.title}*\n`
-		txt += `Artists : ${x.artists}\n`
-		txt += `Duration : ${x.duration}\n`
-		txt += `Link : ${x.link}\n`
-		txt += `${x.preview_url ? `Preview : ${x.preview_url}\n` : ''}`
-		txt += `───────────────────`
+		ini_txt += `\n\n*Title : ${x.title}*\n`
+		ini_txt += `Artists : ${x.artists}\n`
+		ini_txt += `Duration : ${x.duration}\n`
+		ini_txt += `Link : ${x.link}\n`
+		ini_txt += `${x.preview_url ? `Preview : ${x.preview_url}\n` : ''}`
+		ini_txt += `───────────────────`
 	}
-	m.reply(txt)
+	m.reply(ini_txt)
 }
 
 handler.menudownload = ['spotsearch <teks>']
 handler.tagsdownload = ['search']
 handler.command = /^spot(ify)?search$/i
 
-
+handler.premium = true
 handler.limit = true
 
 export default handler

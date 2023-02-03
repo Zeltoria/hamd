@@ -21,11 +21,11 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
 			let json = await res.json()
 			if (json.status != '200') throw new e()
 			let get_result = json.result
-			let txt = `*${get_result.weton}*\n\n`
-			txt += `*Pekerjaan :* ${get_result.pekerjaan}\n\n`
-			txt += `*Rejeki :* ${get_result.rejeki}\n\n`
-			txt += `*Jodoh :* ${get_result.jodoh}`
-			m.reply(txt)
+			let ini_txt = `*${get_result.weton}*\n\n`
+			ini_txt += `*Pekerjaan :* ${get_result.pekerjaan}\n\n`
+			ini_txt += `*Rejeki :* ${get_result.rejeki}\n\n`
+			ini_txt += `*Jodoh :* ${get_result.jodoh}`
+			m.reply(ini_txt)
 		} catch (e) {
 			m.reply(`Terjadi kesalahan, coba lagi nanti.`)
 		}
@@ -36,7 +36,7 @@ handler.help = ['weton <tgl>|<bln>|<thn>']
 handler.tags = ['primbon']
 handler.command = /^(weton)$/i
 
-
+handler.premium = true
 handler.limit = true
 
 export default handler

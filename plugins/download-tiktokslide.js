@@ -26,7 +26,7 @@ handler.menudownload = ['tiktokslide <url>']
 handler.tagsdownload = ['search']
 handler.command = /^((tt|tiktok)slide)$/i
 
-
+handler.premium = true
 handler.limit = true
 
 export default handler

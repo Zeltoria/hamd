@@ -3,7 +3,7 @@ import fetch from 'node-fetch'
 const regex = /(?:https|git)(?::\/\/|@)github\.com[\/:]([^\/:]+)\/(.+)/i
 
 let handler = async (m, { conn, args, usedPrefix, command }) => {
-	if (!args[0]) throw `Example user ${usedPrefix}${command} https://github.com/BochilGaming/games-wabot-md`
+	if (!args[0]) throw `Example user ${usedPrefix}${command} https://github.com/clicknetcafe/azamibot-md`
 	if (!regex.test(args[0])) throw 'Invalid repositories!'
 	try {
 		let [_, user, repo] = args[0].match(regex) || []
@@ -22,7 +22,7 @@ handler.menudownload = ['gitclone']
 handler.tagsdownload = ['search']
 handler.command = /^(gitclone)$/i
 
-
+handler.premium = true
 handler.limit = true
 
 export default handler

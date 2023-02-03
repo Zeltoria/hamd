@@ -17,7 +17,7 @@ handler.menudownload = ['likeenowm <url>']
 handler.tagsdownload = ['search']
 handler.command = /^(likeenowm)$/i
 
-
+handler.premium = true
 handler.limit = true
 
 export default handler

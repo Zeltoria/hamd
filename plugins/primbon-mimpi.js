@@ -5,11 +5,11 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
 	try {
 		let anu = await artimimpi(`${text}`)
 		if (anu.length != 0) {
-			let txt = `*Arti mimpi : ${text}*\n\n`
+			let ini_txt = `*Arti mimpi : ${text}*\n\n`
 			for (var x of anu) {
-				txt += `⭔ ${x}*\n\n`
+				ini_txt += `⭔ ${x}*\n\n`
 			}
-			m.reply(txt)
+			m.reply(ini_txt)
 		} else {
 			m.reply(`Tidak ditemukan tafsir mimpi *${text}*, cari dengan kata kunci yang lain.\nContoh : *${usedPrefix + command} ular*`)
 		}
@@ -23,7 +23,7 @@ handler.help = ['artimimpi <teks>']
 handler.tags = ['primbon']
 handler.command = /^(tafsir|arti)mimpi$/i
 
-
+handler.premium = true
 handler.limit = true
 
 export default handler

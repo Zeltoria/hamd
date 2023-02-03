@@ -39,7 +39,7 @@ handler.help = ['infogempa']
 handler.tags = ['information']
 handler.command = /^(infogempa)$/i
 
-
+handler.premium = true
 handler.limit = true
 
 export default handler

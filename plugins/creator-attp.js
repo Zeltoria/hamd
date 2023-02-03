@@ -1,12 +1,22 @@
-import { sticker } from '../lib/sticker.js'
-let handler = async (m, { conn, text }) => {
-    let teks = text ? text : m.quoted && m.quoted.text ? m.quoted.text : m.text
-    let stiker = await sticker(null, global.API('https://api.erdwpe.com/api/maker/', 'attp?text', { file: '', text: teks }), global.packname, global.author)
-    if (stiker) return conn.sendFile(m.chat, stiker, 'sticker.webp', '', m)
-    throw stiker.toString()
+import { createSticker } from 'wa-sticker-formatter'
+import fs from 'fs'
+
+let handler = async (m, { conn, args, text, usedPrefix, command }) => {
+	text = text ? text : m.quoted?.text ? m.quoted.text : m.quoted?.caption ? m.quoted.caption : m.quoted?.description ? m.quoted.description : ''
+	if (!text) throw `Example : ${usedPrefix + command} Lagi Ruwet`
+	try {
+		let stiker = await createSticker(`https://api.lolhuman.xyz/api/${command}?apikey=${apilol}&text=${encodeURIComponent(text.substring(0, 151))}`, { pack: packname, author: author })
+		await conn.sendFile(m.chat, stiker, 'atet.webp', '', m)
+	} catch (e) {
+		console.log(e)
+		await conn.sendFile(m.chat, fs.readFileSync(`./media/sticker/bronya.webp`), 'atet.webp', '', m)
+	}
 }
-handler.help = ['attp <teks>']
+
+handler.help = ['ttp','ttp2','ttp3','ttp4','ttp5','ttp6','attp','attp2']
 handler.tags = ['creator']
-handler.command = /^attp$/i
+handler.command = /^((ttp(2|3|4|5|6)?)|(attp2?))$/i
+
 handler.limit = true
+
 export default handler

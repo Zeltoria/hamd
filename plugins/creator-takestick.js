@@ -25,7 +25,7 @@ handler.help = ['takestick <packname>|<author>']
 handler.tags = ['creator']
 handler.command = /^(((stic?ker)?wm(stic?ker)?)|(takestic?(ker)?)|colong)$/i
 
-
+handler.premium = true
 handler.limit = true
 
 export default handler

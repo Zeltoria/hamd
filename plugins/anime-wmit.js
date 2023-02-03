@@ -34,7 +34,7 @@ handler.menuanime = ['wmit']
 handler.tagsanime = ['search']
 handler.command = /^wmit|(whatmanga)$/i
 
-
+handler.premium = true
 handler.limit = true
 
 export default handler

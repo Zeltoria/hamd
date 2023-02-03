@@ -6,20 +6,20 @@ let handler = async (m, { conn, text, args, usedPrefix, command }) => {
 	let json = await res.json()
 	if (json[`${text.replace(/ /g, '-')}`] != undefined) {
 		let anu = json[`${text.replace(/ /g, '-')}`]
-		let txt = `*Name : ${anu.name}*\n\n`
-		txt += `Rarity : ${anu.rarity}\n`
-		txt += `Effect : ${anu.effect}\n\n`
-		txt += `*Crafting :*\n`
+		let ini_txt = `*Name : ${anu.name}*\n\n`
+		ini_txt += `Rarity : ${anu.rarity}\n`
+		ini_txt += `Effect : ${anu.effect}\n\n`
+		ini_txt += `*Crafting :*\n`
 		for (var x of anu.crafting) {
-			txt += `Item : ${x.item}\n`
-			txt += `Quantity : ${x.quantity}\n`
-			txt += `──────────\n\n`
+			ini_txt += `Item : ${x.item}\n`
+			ini_txt += `Quantity : ${x.quantity}\n`
+			ini_txt += `──────────\n\n`
 		}
-		await m.reply(txt)
+		await m.reply(ini_txt)
 	} else {
 		let bruh = Object.keys(json)
-		let txt = `*Not Found*\n\n*Available potions is :*\n${bruh.toString().replace(/-/g, ' ').replace(/,/g, ', ')}`
-		m.reply(txt)
+		let ini_txt = `*Not Found*\n\n*Available potions is :*\n${bruh.toString().replace(/-/g, ' ').replace(/,/g, ', ')}`
+		m.reply(ini_txt)
 	}
 }
 

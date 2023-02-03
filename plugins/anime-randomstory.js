@@ -22,7 +22,7 @@ handler.menuanime = ['storyanime']
 handler.tagsanime = ['randommp4']
 handler.command = /^(stor(i|y)a?nime|a?nimestor(i|y))$/i
 
-
+handler.premium = true
 handler.limit = true
 
 export default handler

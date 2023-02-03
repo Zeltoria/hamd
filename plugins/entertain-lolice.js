@@ -9,7 +9,7 @@ handler.help = ['lolice']
 handler.tags = ['entertainment']
 handler.command = /^(lolice)$/i
 
-
+handler.premium = true
 handler.limit = true
 
 export default handler

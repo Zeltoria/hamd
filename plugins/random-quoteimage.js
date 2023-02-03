@@ -18,7 +18,7 @@ handler.help = ['quoteimage']
 handler.tags = ['randomtext']
 handler.command = /^(quotes?image)$/i
 
-
+handler.premium = true
 handler.limit = true
 
 export default handler

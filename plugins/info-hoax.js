@@ -6,15 +6,15 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
 		let json = await res.json()
 		let get_result = json.result
 		if (get_result.length == 0) throw Error(`Informasi tidak tersedia.`)
-		let txt = '*Info Hoax :*'
+		let ini_txt = '*Info Hoax :*'
 		for (var x of get_result) {
-			txt += `\n\nTitle : *${x.title}*\n`
-			txt += `Link : ${x.link}\n`
-			txt += `Posted : ${x.posted}\n`
-			txt += `Description : ${x.desc}\n`
-			txt += `───────────────────`
+			ini_txt += `\n\nTitle : *${x.title}*\n`
+			ini_txt += `Link : ${x.link}\n`
+			ini_txt += `Posted : ${x.posted}\n`
+			ini_txt += `Description : ${x.desc}\n`
+			ini_txt += `───────────────────`
 		}
-		await m.reply(txt)
+		await m.reply(ini_txt)
 	} catch (e) {
 		console.log(e)
 		m.reply(`Informasi tidak tersedia.`)
@@ -25,7 +25,7 @@ handler.help = ['hoax']
 handler.tags = ['information']
 handler.command = /^((info)?hoax)$/i
 
-
+handler.premium = true
 handler.limit = true
 
 export default handler

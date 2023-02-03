@@ -17,7 +17,7 @@ handler.menudownload = ['smulevideo <url>']
 handler.tagsdownload = ['search']
 handler.command = /^(smule(mp4|video))$/i
 
-
+handler.premium = true
 handler.limit = true
 
 export default handler

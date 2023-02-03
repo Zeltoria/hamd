@@ -22,7 +22,7 @@ handler.help = ['ppcouple']
 handler.tags = ['searching']
 handler.command = /^((pp)?couple|ppcp)$/i
 
-
+handler.premium = true
 handler.limit = true
 
 export default handler
