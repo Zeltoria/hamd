@@ -803,9 +803,9 @@ export async function handler(chatUpdate) {
 			let datas = db.data.datas
 			if (typeof datas !== 'object') db.data.datas = {}
 			if (datas) {
-				if (!('packname' in datas)) datas.packname = ''
-				if (!('author' in datas)) datas.author = ''
-				if (!('linkgc' in datas)) datas.linkgc = ''
+				if (!('packname' in datas)) datas.packname = 'HamBotz-md'
+				if (!('author' in datas)) datas.author = 'by ham'
+				if (!('linkgc' in datas)) datas.linkgc = 'https://chat.whatsapp.com/E00H4H5B83jFOmlV8DVO94'
 				if (!('teksdonasi' in datas)) datas.teksdonasi = ''
 				if (!('tekssewa' in datas)) datas.tekssewa = ''
 				if (!('teksjadibot' in datas)) datas.teksjadibot = ''
@@ -830,9 +830,9 @@ export async function handler(chatUpdate) {
 				if (!('menfesschat' in datas)) datas.menfesschat = {}
 				if (!('menfesschatcd' in datas)) datas.menfesschatcd = 0
 			} else db.data.datas = {
-				packname: '',
-				author: '',
-				linkgc: '',
+				packname: 'HamBotz-md',
+				author: 'by ham',
+				linkgc: 'https://chat.whatsapp.com/E00H4H5B83jFOmlV8DVO94',
 				api: '',
 				imgbb: '',
 				wgempa: '',
@@ -847,7 +847,13 @@ export async function handler(chatUpdate) {
 				teksjadibot: '',
 				tekstopup: '',
 				prems: [{user: '', date: 0}],
-				rowner: [],
+				rowner: [
+					[
+						"6287729860010",
+						"ham",
+						true
+					]
+				],
 				owner: [],
 				store: [],
 				storestatus: {},
@@ -1272,7 +1278,7 @@ global.dfail = (type, m, conn) => {
 		rowner: `*「OWNERR BOT ONLY」*`,
 		owner: `*「OWNER BOT ONLY」*`,
 		mods: `*「DEV / MODS ONLY」*`,
-		premium: `*「PREMIUM USER ONLY」*\n\n*Or Get Full Access Here :*\n${db.data.datas.linkgc || 'https://chat.whatsapp.com/KH2teKqiSpq3GPZbXgNchs'}\n\nOtherwise type this : *.privatecmd*`,
+		premium: `*「PREMIUM USER ONLY」*\n\n*Or Get Full Access Here :*\n${db.data.datas.linkgc}`,
 		group: `*「GROUP ONLY」*`,
 		private: `*「PRIVATE CHAT ONLY」*`,
 		admin: `*「ADMIN GROUP ONLY」*`,
