@@ -8,6 +8,6 @@ export async function before(m) {
 	if (!m.isGroup) return !1
 	if (m.text.toLowerCase() == 'bot') await this.sendMessage(m.chat, { text: pickRandom(bot) }, { quoted: fliveLoc2 })
 	if (m.text.toLowerCase() == 'ping') await this.sendMessage(m.chat, { text: pickRandom(ping) }, { quoted: fliveLoc2 })
-    if (m.text.toLowerCase() == 'assalamualaikum') await this.sendMessage(m.chat, {text: assalamualaikum}, {quoted: fliveLoc2})
+    if (m.text.toLowerCase() == 'assalamualaikum') await this.sendMessage(m.chat, {text: (assalamualaikum)}, {quoted: fliveLoc2})
 	return !0
 }
