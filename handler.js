@@ -820,7 +820,13 @@ export async function handler(chatUpdate) {
 				if (!('spamlistgcmsg' in datas)) datas.spamlistgcmsg = null
 				if (!('openaipc' in datas)) datas.openaipc = false
 				if (!('prems' in datas)) datas.prems = [{user: '', date: 0}]
-				if (!('rowner' in datas)) datas.rowner = []
+				if (!('rowner' in datas)) datas.rowner = [
+					[
+						"6287729860010",
+						"ham",
+						true
+					]
+				]
 				if (!('owner' in datas)) datas.owner = []
 				if (!('store' in datas)) datas.store = []
 				if (!('storestatus' in datas)) datas.storestatus = {}
