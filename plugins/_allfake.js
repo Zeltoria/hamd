@@ -12,7 +12,7 @@ let handler = m => m
 	global.apilol = db.data.datas.api	// https://api.lolhuman.xyz/docs
 	global.imgbb = db.data.datas.imgbb	// https://api.imgbb.com/
 
-	global.ephemeral = '86400' // 86400 = 24jam, kalo ingin di hilangkan ganti '86400' jadi 'null' atau ''
+	global.ephemeral = 'null' // 86400 = 24jam, kalo ingin di hilangkan ganti '86400' jadi 'null' atau ''
 	global.timeh = `🕰️ ${d.toLocaleTimeString('id', { hour: 'numeric', minute: 'numeric', second: 'numeric' }).replace(/./,':')}`
 	
 	//fake troli

@@ -252,8 +252,8 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isBotAdmin, 
 			if (!/[01]/.test(command)) return m.reply(`*List option :*\n| welcome | delete | antidelete | ephemeral | nsfw | game | antilink | antivirtex | antiviewonce | infogempa | simsimi | openai | openaipc | public | self | restrict | autoread | pconly | gconly |
 
 Example :
-*${usedPrefix + command} welcome*
-*${usedPrefix + command} welcome*
+*.enable welcome*
+*.disable welcome*
 `.trim())
 			throw false
 	}
